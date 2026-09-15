@@ -1,0 +1,15 @@
+{
+  "stage": "86_s4a_catalonia_feature_materialization",
+  "year": 2019,
+  "direct_root": "data/sen4agrinet/raw/cat_2019_nc",
+  "output_dir": "artifacts/stage86/s4a_catalonia_features",
+  "tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "shared_classes": {"160": "rye", "170": "oats", "510": "potatoes", "770": "peas", "975": "fallow_land"},
+  "cutoffs": [
+    "2019-04-15T23:59:59", "2019-05-15T23:59:59", "2019-06-15T23:59:59",
+    "2019-07-15T23:59:59", "2019-08-15T23:59:59", "2019-09-15T23:59:59"
+  ],
+  "channels": ["ndvi", "valid_mask", "days_since_last_valid"],
+  "padding": "right_pad_to_stage85_max_unique_observation_count",
+  "protected_test_read": false
+}

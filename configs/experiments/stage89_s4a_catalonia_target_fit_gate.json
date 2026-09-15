@@ -1,0 +1,8 @@
+{
+  "stage": "89_s4a_catalonia_target_fit_gate",
+  "role_assignments": "artifacts/stage87/s4a_catalonia_role_freeze/stage87_role_assignments.csv",
+  "required_roles": ["target_fit", "calibration"],
+  "forbidden_fallbacks": ["reuse_source_fit_as_target_fit", "use_calibration_for_fine_tuning"],
+  "protected_test_read": false,
+  "formal_claim_eligible": false
+}

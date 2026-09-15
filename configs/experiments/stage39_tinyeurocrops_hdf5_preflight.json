@@ -1,0 +1,30 @@
+{
+  "stage": "stage39_tinyeurocrops_hdf5_preflight",
+  "dataset": "TinyEuroCrops",
+  "source": "TUM official data server",
+  "training_files": [
+    "AT_T33UWP_train.h5",
+    "DK_T32VNH_train.h5",
+    "SI_T33TWM_train.h5"
+  ],
+  "roles": {
+    "source": ["AT112", "AT122", "AT123", "AT124", "AT125", "AT127", "AT130", "AT223", "DK032", "DK042", "DK050"],
+    "target_fit": ["SI031", "SI032", "SI033"],
+    "target_risk_calibration": ["SI034"],
+    "unassigned_training_region": ["SI035"]
+  },
+  "frozen_checks": {
+    "official_sha512_required": true,
+    "label_alignment_required_for_labeled_regions": true,
+    "test_files_downloaded": false,
+    "test_files_read": false,
+    "final_test_labels_read": false
+  },
+  "value_block_audit": {
+    "required_before_external_training": true,
+    "completed_locally": false,
+    "reason": "PyTables block0_values is a large pickled object array; schedule on a high-memory node before training."
+  },
+  "class_route": "generic_hcat8_only",
+  "no_training_started": true
+}

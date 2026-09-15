@@ -1,0 +1,67 @@
+{
+  "stage": "stage40_tinyeurocrops_generic_hcat8_protocol",
+  "dataset": "TinyEuroCrops",
+  "status": "READY_FOR_SCALE_AND_PREPROCESSING_PILOT",
+  "experiment_authorized": false,
+  "scientific_scope": {
+    "claim": "external replication of the output-label-aware risk-constrained stopping mechanism on a newly frozen legacy-HCAT8 task",
+    "not_claims": [
+      "replication of the Estonia sixteen-class label space",
+      "same semantic output labels as Stage36",
+      "country-only domain-shift robustness",
+      "risk guarantees on the protected test set before policy freezing"
+    ]
+  },
+  "roles": {
+    "source_regions": ["AT112", "AT122", "AT123", "AT124", "AT125", "AT127", "AT130", "AT223", "DK032", "DK042", "DK050"],
+    "target_fit_regions": ["SI031", "SI032", "SI033"],
+    "target_risk_calibration_region": "SI034",
+    "unassigned_training_regions": ["SI035"],
+    "protected_test_regions": ["AT121", "DK041", "SI036", "SI037"]
+  },
+  "class_selection": {
+    "selection_roles": ["source", "target_fit"],
+    "minimum_source_count": 1000,
+    "minimum_target_fit_count": 500,
+    "exclude_names": ["not_known"],
+    "calibration_counts_used_for_selection": false,
+    "taxonomy": "legacy HCAT8 code and published crop name; no HCAT10 inference"
+  },
+  "preprocessing_gate": {
+    "status": "PENDING_OFFICIAL_SCALE_RULE",
+    "observed_sample_range": "0 to approximately 28000",
+    "candidate_rules": [
+      "official TinyEuroCrops README/notebook rule",
+      "documented integer-to-reflectance conversion if provided"
+    ],
+    "forbidden_before_documentation": [
+      "silently dividing by 10000",
+      "silently clipping to [0, 10000]",
+      "using target test statistics to choose a scale"
+    ]
+  },
+  "data_access": {
+    "allowed_now": [
+      "HDF5s/train/*.h5",
+      "csv_labels/train/*.csv",
+      "Stage39 audit artifacts",
+      "public dataset documentation"
+    ],
+    "protected_until_policy_freeze": [
+      "HDF5s/test/*.h5",
+      "csv_labels/test/*.csv",
+      "test GeoJSON",
+      "test labels and metrics"
+    ],
+    "test_access_currently": false
+  },
+  "next_gates": [
+    "Resolve and record the official reflectance scale",
+    "Run a training-only preprocessing smoke test",
+    "Freeze generic HCAT8 class manifest and split hashes",
+    "Train source and target-fit models",
+    "Calibrate only on SI034",
+    "Download and audit protected test files",
+    "Freeze the selective policy, then run one blind test"
+  ]
+}

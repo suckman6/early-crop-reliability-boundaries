@@ -1,0 +1,28 @@
+{
+  "stage": "70",
+  "name": "agrisen_cog_multitarget_temporal_observation_aware_protocol",
+  "dataset": {
+    "archive": "data/agrisen_cog/raw/parcel_timeseries_barycenters_raw.zip",
+    "archive_md5": "cd8111060049dfd436d6a2252d0f79c0",
+    "role_manifest": "artifacts/stage69b/multitarget_role_freeze_seed0/stage69b_multitarget_role_manifest.json"
+  },
+  "targets": {
+    "Austria": {"rank": 1, "role_ids": "artifacts/stage69b/multitarget_role_freeze_seed0/stage69b_Austria_role_ids.npz"},
+    "Denmark": {"rank": 2, "role_ids": "artifacts/stage69b/multitarget_role_freeze_seed0/stage69b_Denmark_role_ids.npz"}
+  },
+  "labels": {
+    "rye": {"icc_code": "16", "index": 0}, "oats": {"icc_code": "17", "index": 1},
+    "potatoes": {"icc_code": "51", "index": 2}, "beans": {"icc_code": "71", "index": 3},
+    "peas": {"icc_code": "77", "index": 4}, "fallow land": {"icc_code": "98", "index": 5}
+  },
+  "early_decision_cutoffs": ["2019-04-15", "2019-05-15", "2019-06-15", "2019-07-15", "2019-08-15", "2019-09-15"],
+  "representation": {
+    "grid": "weekly bins from 1 January to cutoff", "duplicate_date": "finite mean", "channels": ["ndvi", "valid_observation_mask", "days_since_last_valid"],
+    "common_cohort": "retained shared label and at least one valid observation by 15 April", "normalisation": "source-train observed NDVI only"
+  },
+  "model": {"name": "TempCNN", "conv_channels": [64, 96, 128], "dilations": [1, 2, 4], "masked_pooling": true},
+  "source_split": {"train_fraction": 0.8, "method": "stable SHA256 parcel hash stratified by country and class"},
+  "training": {"epochs_source": 30, "epochs_target_fit": 10, "batch_size": 512, "source_learning_rate": 0.001, "target_learning_rate": 0.0003, "weight_decay": 0.0001, "seeds": [0, 1, 2], "device": "cuda"},
+  "future_stage71_policy_family": {"score": "pmax", "thresholds": [0.8, 0.85, 0.9, 0.95, 0.975], "minimum_valid_observations": [1, 2, 4, 6], "risk_target": 0.1, "coverage_target": 0.2, "confidence": 0.95, "multiple_testing": "Bonferroni over 20 candidates and risk/coverage bounds"},
+  "protected_test": {"country_year": "selected target, 2020", "read_allowed": false}
+}

@@ -1,0 +1,17 @@
+{
+  "stage": "stage45_tinyeurocrops_risk_calibration_export",
+  "dataset": "TinyEuroCrops",
+  "status": "READY_FOR_MANUAL_CALIBRATION_EXPORT",
+  "experiment_authorized": false,
+  "calibration_region": "SI034",
+  "protected_regions": ["SI035", "AT121", "DK041", "SI036", "SI037"],
+  "source_normalization": "reuse source-train mean/std from the matching Stage43 run",
+  "cutoff_checkpoint_must_match": true,
+  "output_contract": {
+    "probabilities": "N x 13 float32",
+    "labels": "N int64",
+    "sample_ids": "N unique parcel IDs",
+    "final_test_read": false
+  },
+  "next_gate": "stage46_selective_policy_calibration"
+}

@@ -1,0 +1,41 @@
+{
+  "dataset": "EuroCropsML Zenodo v8 preprocess",
+  "task": "closed-set cross-country crop classification with risk-constrained early stopping",
+  "year": 2021,
+  "source_domain": {
+    "countries": ["Latvia", "Portugal"],
+    "train_split": "latvia_portugal_vs_estonia/pretrain/region_split.json:train",
+    "development_split": "latvia_portugal_vs_estonia/pretrain/region_split.json:val"
+  },
+  "target_domain": {
+    "country": "Estonia",
+    "adaptation_split": "latvia_portugal_vs_estonia/finetune/region_split_all.json:train",
+    "risk_calibration_split": "latvia_portugal_vs_estonia/finetune/region_split_all.json:val",
+    "final_test_split": "latvia_portugal_vs_estonia/finetune/region_split_all.json:test"
+  },
+  "class_rule": {
+    "selection_data": ["source_train", "target_adaptation_train"],
+    "minimum_source_train_samples": 1000,
+    "minimum_target_adaptation_train_samples": 500,
+    "hcat_codes": [
+      "3301010101", "3301010102", "3301010300", "3301010401",
+      "3301010402", "3301010500", "3301010600", "3301020100",
+      "3301020600", "3301030000", "3301060401", "3301070000",
+      "3301090301", "3301090303", "3301110000", "3301150200"
+    ]
+  },
+  "input_contract": {
+    "data_key": "data",
+    "date_key": "dates",
+    "center_key": "center",
+    "bands": 13,
+    "observation_quality": "timestamp availability and prefix coverage only; no SCL, cloud mask, or parcel geometry is present"
+  },
+  "early_decision_cutoffs": ["2021-04-15", "2021-05-15", "2021-06-15", "2021-07-15", "2021-08-15", "2021-09-15"],
+  "separation_rules": [
+    "Use target final-test labels only for final reporting.",
+    "Use target calibration labels only to calibrate the pre-specified risk policy, never to fit the classifier or select classes/cutoffs/model variants.",
+    "Use source development data for source-model selection.",
+    "Do not claim cross-year robustness, parcel-level cloud quality, or zero-shot target transfer."
+  ]
+}

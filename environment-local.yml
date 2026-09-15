@@ -1,0 +1,11 @@
+name: rcecrop
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - h5py
+  - pyyaml
+  - pandas
+  - pytest

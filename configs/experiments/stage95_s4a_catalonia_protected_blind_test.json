@@ -1,0 +1,25 @@
+{
+  "stage": "95_s4a_catalonia_protected_blind_test",
+  "name": "catalonia_2020_one_time_protected_blind_test",
+  "direct_root": "data/sen4agrinet/raw/cat_2020_nc",
+  "tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "year": 2020,
+  "shared_classes": {"160": "rye", "170": "oats", "510": "potatoes", "770": "peas", "975": "fallow_land"},
+  "cutoffs": [
+    "2020-04-15T23:59:59", "2020-05-15T23:59:59", "2020-06-15T23:59:59",
+    "2020-07-15T23:59:59", "2020-08-15T23:59:59", "2020-09-15T23:59:59"
+  ],
+  "padded_time_width": 67,
+  "batch_size": 512,
+  "target_fit_root": "artifacts/stage92/s4a_catalonia_target_fit",
+  "policy_root": "artifacts/stage94/s4a_catalonia_selective_calibration",
+  "output_dir": "artifacts/stage95/s4a_catalonia_protected_blind_test",
+  "confidence": 0.95,
+  "overall_error_risk_target": 0.10,
+  "minimum_automatic_coverage": 0.20,
+  "roles_read": ["target_fit_checkpoint", "frozen_policy", "protected_blind_test_2020"],
+  "roles_not_read": ["calibration_2019_labels", "source_fit_2019_labels"],
+  "protected_test_read": true,
+  "formal_claim_eligible": false,
+  "no_posthoc_selection": true
+}

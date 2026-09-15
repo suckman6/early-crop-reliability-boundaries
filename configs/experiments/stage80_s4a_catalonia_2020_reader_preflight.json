@@ -1,0 +1,16 @@
+{
+  "stage": "80",
+  "name": "s4a_catalonia_2020_reader_preflight",
+  "input_root": "data/sen4agrinet/raw/cat_2020_nc",
+  "expected_year": 2020,
+  "expected_country_code": "ES",
+  "expected_tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "expected_file_counts": {"31TBF": 299, "31TCF": 454, "31TCG": 792, "31TDF": 86, "31TDG": 686},
+  "read_scope": ["root groups", "root attributes", "B02/time metadata", "B02/B02 shape"],
+  "materialize_band_values": false,
+  "label_data_read": false,
+  "parcel_data_read": false,
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

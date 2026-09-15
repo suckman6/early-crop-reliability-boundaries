@@ -1,0 +1,11 @@
+{
+  "stage": "90_s4a_catalonia_three_role_freeze",
+  "input_role_assignments": "artifacts/stage87/s4a_catalonia_role_freeze/stage87_role_assignments.csv",
+  "output_dir": "artifacts/stage90/s4a_catalonia_three_role_freeze",
+  "assignment_rule": "preserve Stage87 calibration blocks; sha256(block) modulo 100 in [30,50) is target_fit; remaining fit blocks are source_fit",
+  "fractions_target": {"source_fit": 0.50, "target_fit": 0.20, "calibration": 0.30},
+  "shared_classes": {"0": "rye", "1": "oats", "2": "potatoes", "3": "peas", "4": "fallow_land"},
+  "minimum_per_class": 100,
+  "protected_test_read": false,
+  "formal_claim_eligible": false
+}

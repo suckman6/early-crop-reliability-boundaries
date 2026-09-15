@@ -1,0 +1,16 @@
+{
+  "stage": "91_s4a_catalonia_source_training",
+  "name": "catalonia_2019_three_role_source_fit_temp_cnn",
+  "feature_dir": "artifacts/stage86/s4a_catalonia_features",
+  "role_assignments": "artifacts/stage90/s4a_catalonia_three_role_freeze/stage90_role_assignments.csv",
+  "role_freeze": "artifacts/stage90/s4a_catalonia_three_role_freeze/stage90_s4a_catalonia_three_role_freeze.json",
+  "shared_classes": {"0": "rye", "1": "oats", "2": "potatoes", "3": "peas", "4": "fallow_land"},
+  "cutoffs": ["2019-04-15", "2019-05-15", "2019-06-15", "2019-07-15", "2019-08-15", "2019-09-15"],
+  "model": {"name": "TempCNN", "conv_channels": [64, 96, 128], "dilations": [1, 2, 4], "masked_pooling": true},
+  "split": {"role": "source_fit", "development_fraction": 0.20, "unit": "spatial_block", "hash": "sha256(block) modulo 5 equals 0"},
+  "training": {"epochs": 30, "batch_size": 512, "learning_rate": 0.001, "weight_decay": 0.0001, "seeds": [0, 1, 2], "device": "cuda"},
+  "normalization": {"source": "source_fit source-train observed NDVI only", "channels": ["ndvi", "valid_observation_mask", "days_since_last_valid"]},
+  "roles_not_read": ["target_fit_2019", "calibration_2019", "protected_blind_test_2020"],
+  "protected_test_read": false,
+  "formal_claim_eligible": false
+}

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "Risk-Calibrated Selective Release for Early-Season Crop Mapping under Geographic Shift"
+type: software
+version: 0.1.0
+date-released: 2026-09-14
+authors:
+  - family-names: "[FAMILY NAME]"
+    given-names: "[GIVEN NAME]"
+url: "https://github.com/[OWNER]/[REPOSITORY]"

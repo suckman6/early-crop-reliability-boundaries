@@ -1,0 +1,30 @@
+{
+  "stage": "75",
+  "name": "agrisen_cog_denmark_external_temporal_one_time_blind_test",
+  "base_protocol": "configs/experiments/stage70_agrisen_multitarget_temporal_protocol.json",
+  "stage71_required": "artifacts/stage71/external_temporal_calibration_seedwise_retry3/stage71_calibration_result.json",
+  "stage74_required": "artifacts/stage74/external_gate_audit/stage74_external_gate_audit.json",
+  "target": "Denmark",
+  "test_year": 2020,
+  "target_selection_basis": "Denmark was frozen as the second external target in Stage 69B and certified in Stage 71; it was not selected using any 2020 result.",
+  "cutoff_mapping": "checkpoint month/day labels from 2019 are mapped to the same month/day in 2020 before materialization",
+  "policy_family": "frozen pmax plus minimum valid observation policy from Stage 71",
+  "report": [
+    "automatic coverage",
+    "automatic label error risk",
+    "descriptive 95% intervals",
+    "mean stopping date",
+    "per-prefix stop counts",
+    "defer rate",
+    "observed contract satisfaction"
+  ],
+  "prohibitions": [
+    "no Austria 2020 re-evaluation as a formal blind test",
+    "no post-test tuning",
+    "no retraining",
+    "no threshold changes",
+    "no class-conditional guarantee",
+    "no universal cross-country generalization claim"
+  ],
+  "output": "artifacts/stage75/denmark_external_temporal_blind_test/"
+}

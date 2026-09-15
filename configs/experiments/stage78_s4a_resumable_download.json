@@ -1,0 +1,23 @@
+{
+  "stage": "78",
+  "name": "s4a_france_2019_resumable_tile_download",
+  "repository": "orion-ai-lab/S4A",
+  "revision": "main",
+  "metadata_endpoint": "https://hf-mirror.com/api/datasets/orion-ai-lab/S4A/tree/main",
+  "download_endpoint": "https://hf-mirror.com/datasets/orion-ai-lab/S4A/resolve/main",
+  "year": 2019,
+  "tiles": ["31TDK", "31UCP", "31TCJ"],
+  "locally_complete_tiles": ["31TCL", "31TDM", "31UDR"],
+  "deferred_tiles": [],
+  "output_root": "data/sen4agrinet/raw/fr_2019_nc",
+  "partial_suffix": ".part",
+  "verification": "file size plus Hugging Face LFS SHA-256",
+  "parallel_downloads": 1,
+  "chunk_size_mib": 4,
+  "maximum_attempts_per_file": 12,
+  "retry_backoff_seconds": [5, 10, 20, 40, 80, 120, 180, 300],
+  "preserve_existing_invalid_zip_files": true,
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

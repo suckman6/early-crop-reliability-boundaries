@@ -1,0 +1,14 @@
+{
+  "stage": "81",
+  "name": "s4a_catalonia_2020_temporal_coverage_audit",
+  "input_root": "data/sen4agrinet/raw/cat_2020_nc",
+  "expected_year": 2020,
+  "cutoffs": ["2020-04-15T23:59:59", "2020-05-15T23:59:59", "2020-06-15T23:59:59", "2020-07-15T23:59:59", "2020-08-15T23:59:59", "2020-09-15T23:59:59"],
+  "read_scope": ["B02/time values and attributes only"],
+  "spectral_values_read": false,
+  "label_data_read": false,
+  "parcel_data_read": false,
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

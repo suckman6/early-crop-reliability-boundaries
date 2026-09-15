@@ -1,0 +1,21 @@
+{
+  "stage": "stage44_tinyeurocrops_target_fit",
+  "dataset": "TinyEuroCrops",
+  "status": "READY_FOR_MANUAL_TARGET_FIT",
+  "experiment_authorized": false,
+  "source_checkpoint_contract": {
+    "stage": "43_tinyeurocrops_source_baseline",
+    "normalization": "reuse source-train mean/std",
+    "cutoff_must_match": true
+  },
+  "target_fit_regions": ["SI031", "SI032", "SI033"],
+  "protected_regions": ["SI034", "SI035", "AT121", "DK041", "SI036", "SI037"],
+  "adaptation": {
+    "epochs": 10,
+    "batch_size": 512,
+    "learning_rate": 0.0003,
+    "seed": 0,
+    "selection_or_calibration_uses_target_fit": false
+  },
+  "next_gate": "stage45_target_risk_calibration_prediction_export"
+}

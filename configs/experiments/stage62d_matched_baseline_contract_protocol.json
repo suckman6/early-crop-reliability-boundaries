@@ -1,0 +1,38 @@
+{
+  "stage": "62D_matched_baseline_contract_sensitivity",
+  "base_protocol": "stage29_fresh_calibration_protocol.json",
+  "score_families": {
+    "pmax": {
+      "description": "maximum softmax probability",
+      "thresholds": [0.8, 0.85, 0.9, 0.95, 0.975]
+    },
+    "margin": {
+      "description": "top-one minus top-two softmax probability",
+      "thresholds": [0.05, 0.1, 0.15, 0.2, 0.25]
+    },
+    "entropy_confidence": {
+      "description": "one minus normalized predictive entropy",
+      "thresholds": [0.2, 0.3, 0.4, 0.5, 0.6]
+    }
+  },
+  "contracts": {
+    "primary": {
+      "overall_error_risk_target": 0.1,
+      "minimum_automatic_coverage": 0.2,
+      "confidence": 0.95
+    },
+    "strict_risk": {
+      "overall_error_risk_target": 0.05,
+      "minimum_automatic_coverage": 0.2,
+      "confidence": 0.95
+    },
+    "higher_coverage": {
+      "overall_error_risk_target": 0.1,
+      "minimum_automatic_coverage": 0.3,
+      "confidence": 0.95
+    }
+  },
+  "roles_read": ["target_risk_calibration"],
+  "roles_not_read": ["source_train", "source_development", "target_adaptation", "target_final_test"],
+  "formal_claim_eligible": false
+}

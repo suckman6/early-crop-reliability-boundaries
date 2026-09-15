@@ -1,0 +1,34 @@
+{
+  "stage": "stage41_tinyeurocrops_scale_preprocessing",
+  "dataset": "TinyEuroCrops",
+  "status": "GO_FOR_TRAINING_ONLY_PREPROCESSING",
+  "experiment_authorized": false,
+  "scale_rule": {
+    "raw_unit": "Sentinel-2 L1C digital-number-like integer values",
+    "transform": "x_scaled = float32(x_raw) / 10000.0",
+    "clipping": "none",
+    "negative_value_handling": "reject",
+    "evidence": [
+      "TinyEuroCrops official README identifies cells as Sentinel-2 reflectances and the dataset paper identifies the source as raw L1C top-of-atmosphere data",
+      "Sentinel-2 documentation states DN = 10000 * REFLECTANCE",
+      "official sample notebook displays integer-valued cells such as 6056 and 5803 without an alternate scale"
+    ]
+  },
+  "normalization": {
+    "method": "train-role-only per-band mean/std after scale conversion",
+    "fit_roles": ["source"],
+    "target_fit_reuse": "apply frozen source statistics; do not refit on target-fit",
+    "calibration_reuse": "apply frozen source statistics; do not fit on SI034"
+  },
+  "smoke_test": {
+    "input_scope": "one small source training region AT223",
+    "required_checks": [
+      "13-band cell length",
+      "finite and nonnegative raw values",
+      "scaled values finite and nonnegative",
+      "parcel IDs align with source training labels",
+      "no test path opened"
+    ]
+  },
+  "next_gate": "training_only_generic_hcat8_reader_pilot"
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "81_s4a_label_time_adapter",
+  "dataset": {
+    "manifest": "data/sen4agrinet/raw/fr_2019_unified/manifest.json",
+    "member_manifest": "data/sen4agrinet/raw/fr_2019_unified/members.csv",
+    "archive_root": "data/sen4agrinet/raw/fr_2019",
+    "direct_root": "data/sen4agrinet/raw/fr_2019_nc",
+    "country": "FR",
+    "year": 2019,
+    "protected_test_read": false
+  },
+  "label_source": {
+    "name": "Sen4AgriNet official CROP_ENCODING",
+    "url": "https://raw.githubusercontent.com/Orion-AI-Lab/S4A/main/utils/encodings_en.py",
+    "dataset_version": "21.03",
+    "taxonomy": "FAO ICC-inspired Sen4AgriNet crop categorization",
+    "unknown_codes": [0, 998]
+  },
+  "shared_classes": [
+    {"name": "rye", "raw_code": 160},
+    {"name": "oats", "raw_code": 170},
+    {"name": "potatoes", "raw_code": 510},
+    {"name": "beans", "raw_code": 710},
+    {"name": "peas", "raw_code": 770},
+    {"name": "fallow_land", "raw_code": 975}
+  ],
+  "minimum_parcels_per_shared_class": 200,
+  "early_cutoffs": [
+    "2019-04-15T23:59:59",
+    "2019-05-15T23:59:59",
+    "2019-06-15T23:59:59",
+    "2019-07-15T23:59:59",
+    "2019-08-15T23:59:59",
+    "2019-09-15T23:59:59"
+  ],
+  "representation": {
+    "bands": ["B04", "B08"],
+    "index": "NDVI=(B08-B04)/(B08+B04)",
+    "duplicate_date_rule": "finite mean per band before NDVI",
+    "future_observation_rule": "discard observations after each cutoff",
+    "missing_observation_rule": "explicit mask; no interpolation or future fill",
+    "parcel_label_rule": "mode of nonzero parcel pixels; ties are marked non-consensus",
+    "output_channels": ["ndvi", "valid_mask", "days_since_last_valid"],
+    "padding": "right-pad to the maximum member observation length"
+  },
+  "pilot": {
+    "members_per_tile": 5,
+    "read_scope": ["labels", "parcels", "B04", "B08", "time"],
+    "materialize_full_archive": false,
+    "model_training_started": false,
+    "policy_selection_started": false
+  }
+}

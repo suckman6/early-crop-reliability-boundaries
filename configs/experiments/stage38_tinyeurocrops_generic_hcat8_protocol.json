@@ -1,0 +1,89 @@
+{
+  "stage": "38_tinyeurocrops_training_label_audit",
+  "status": "GO_FOR_GENERIC_HCAT8_EXTERNAL_REPLICATION_ONLY",
+  "dataset": "TinyEuroCrops",
+  "year_by_country": {
+    "Austria": 2020,
+    "Denmark": 2019,
+    "Slovenia": 2020
+  },
+  "roles": {
+    "source_train_countries": [
+      "Austria",
+      "Denmark"
+    ],
+    "target_fit_regions": [
+      "SI031",
+      "SI032",
+      "SI033"
+    ],
+    "target_risk_calibration_region": "SI034",
+    "protected_target_test_regions": [
+      "SI036",
+      "SI037"
+    ]
+  },
+  "class_rule": {
+    "selection_data": [
+      "source_train",
+      "target_fit"
+    ],
+    "minimum_source_train_samples": 1000,
+    "minimum_target_fit_samples": 500,
+    "excluded_names": [
+      "not_known"
+    ],
+    "legacy_hcat8_codes": [
+      "33101010",
+      "33101060",
+      "33101100",
+      "33103000",
+      "33106042",
+      "33107000",
+      "33109000",
+      "33111022",
+      "33111023",
+      "33114000",
+      "33200000",
+      "33301010",
+      "33304000"
+    ],
+    "target_risk_calibration_counts_used_for_selection": false
+  },
+  "scientific_scope": {
+    "allowed_claim": "external replication of the output-label-aware risk-control mechanism on a new legacy-HCAT8 task",
+    "prohibited_claims": [
+      "replication of the exact Estonia sixteen-class label space",
+      "confirmation that winter common soft wheat remains the certified output",
+      "isolated country-shift robustness because country, year and preprocessing all change",
+      "test performance before policy freezing"
+    ],
+    "same_stage36_output_semantics_supported": false,
+    "winter_rapeseed_semantic_match": {
+      "legacy_hcat8": "33106042",
+      "legacy_name": "winter_rape"
+    },
+    "winter_common_soft_wheat_semantic_match": null
+  },
+  "next_gate": {
+    "stage": "39_training_hdf5_schema_and_prefix_preflight",
+    "allowed_downloads": [
+      "HDF5s/train/AT_T33UWP_train.h5",
+      "HDF5s/train/DK_T32VNH_train.h5",
+      "HDF5s/train/SI_T33TWM_train.h5"
+    ],
+    "prohibited_downloads": [
+      "HDF5s/test/AT_T33UWP_test.h5",
+      "HDF5s/test/DK_T32VNH_test.h5",
+      "HDF5s/test/SI_T33TWM_test.h5",
+      "csv_labels/test/*"
+    ],
+    "experiment_authorized": false
+  },
+  "test_access": {
+    "test_labels_downloaded": false,
+    "test_labels_read": false,
+    "test_time_series_downloaded": false,
+    "test_time_series_read": false
+  }
+}

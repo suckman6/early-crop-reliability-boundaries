@@ -1,0 +1,41 @@
+{
+  "dataset": "EuroCrops v2 France",
+  "source_manifest": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DRLL/EuroCropsV2/all_gpqt_files.csv",
+  "mapping": "data/eurocrops_v2/eurocrops_mapping.csv",
+  "group_key": "fr_stack.parquet:cropfield",
+  "group_role_rule": "duckdb hash(group_key) % 10",
+  "roles": {
+    "train": {"years": [2017, 2018, 2019], "buckets": [0, 1, 2, 3, 4, 5]},
+    "policy_development": {"years": [2020], "buckets": [6]},
+    "risk_calibration": {"years": [2021], "buckets": [7]},
+    "final_test": {"years": [2022], "buckets": [8]},
+    "temporal_stress": {"years": [2023], "buckets": [9]}
+  },
+  "class_selection": {
+    "selection_years": [2017, 2018, 2019, 2020],
+    "minimum_parcels_per_selection_year": 10000,
+    "semantic_exclusions": ["fallow_land_not_crop", "tree_wood_forest", "unmaintained"],
+    "hcat4_labels": [
+      "alfalfa_lucerne",
+      "legumes",
+      "lolium_ryegrass",
+      "maize_corn_popcorn",
+      "permanent_grassland",
+      "poaceae_grasses",
+      "spring_barley",
+      "sugar_beet",
+      "sunflower",
+      "vineyards_wine_vine_rebland_grapes",
+      "winter_barley",
+      "winter_common_soft_wheat",
+      "winter_rapeseed_rape",
+      "winter_triticale"
+    ]
+  },
+  "manifest_max_parcels_per_class_year": 10000,
+  "sentinel_input": {
+    "collection": "sentinel-2-l2a",
+    "catalog": "https://planetarycomputer.microsoft.com/api/stac/v1",
+    "training_start_year_reason": "2015-2016 Stage 14 growing-season clear-observation coverage is insufficient for the primary fixed-calendar protocol"
+  }
+}

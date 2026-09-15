@@ -1,0 +1,33 @@
+{
+  "stage": "66",
+  "name": "agrisen_cog_external_selective_calibration",
+  "base_protocol": "configs/experiments/stage65_agrisen_external_protocol.json",
+  "calibration_runs": "artifacts/stage65/calibration_2019-*-seed0",
+  "score_families": {
+    "pmax": {
+      "description": "maximum softmax probability",
+      "thresholds": [0.8, 0.85, 0.9, 0.95, 0.975],
+      "formal_policy": true
+    },
+    "margin": {
+      "description": "top-one minus top-two softmax probability",
+      "thresholds": [0.05, 0.1, 0.15, 0.2, 0.25],
+      "formal_policy": false
+    },
+    "entropy_confidence": {
+      "description": "one minus normalized predictive entropy",
+      "thresholds": [0.2, 0.3, 0.4, 0.5, 0.6],
+      "formal_policy": false
+    }
+  },
+  "selective_risk_contract": {
+    "overall_error_risk_target": 0.1,
+    "minimum_automatic_coverage": 0.2,
+    "confidence": 0.95,
+    "multiplicity": "Bonferroni over the five fixed candidates and two bounds per score family"
+  },
+  "selection_rule": "earliest_mean_stop_index_then_highest_coverage_then_lowest_threshold",
+  "roles_read": ["target_risk_calibration"],
+  "roles_not_read": ["source_fit", "target_fit", "protected_blind_test"],
+  "formal_claim_eligible": false
+}

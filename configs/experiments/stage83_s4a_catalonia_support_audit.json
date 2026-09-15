@@ -1,0 +1,27 @@
+{
+  "stage": "83_s4a_catalonia_support_audit",
+  "protocol": "configs/experiments/stage82_s4a_five_class_protocol.json",
+  "official_repository": "https://github.com/Orion-AI-Lab/S4A",
+  "official_dataset": "https://huggingface.co/datasets/orion-ai-lab/S4A",
+  "download_endpoint": "https://hf-mirror.com/datasets/orion-ai-lab/S4A/resolve/main/data",
+  "catalonia_tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "patch_grid": {
+    "31TBF": [30, 30],
+    "31TCF": [30, 28],
+    "31TCG": [30, 30],
+    "31TDF": [16, 10],
+    "31TDG": [30, 30]
+  },
+  "expected_file_counts": {
+    "2019": {"31TBF": 299, "31TCF": 454, "31TCG": 797, "31TDF": 85, "31TDG": 686},
+    "2020": {"31TBF": 299, "31TCF": 454, "31TCG": 792, "31TDF": 86, "31TDG": 686}
+  },
+  "years": [2019, 2020],
+  "local_roots": {
+    "2019": ["data/sen4agrinet/raw/cat_2019", "data/sen4agrinet/raw/cat_2019_nc"],
+    "2020": ["data/sen4agrinet/raw/cat_2020", "data/sen4agrinet/raw/cat_2020_nc"]
+  },
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

@@ -1,0 +1,17 @@
+{
+  "stage": "85_s4a_catalonia_prefix_audit",
+  "year": 2019,
+  "direct_root": "data/sen4agrinet/raw/cat_2019_nc",
+  "tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "cutoffs": [
+    "2019-04-15T23:59:59",
+    "2019-05-15T23:59:59",
+    "2019-06-15T23:59:59",
+    "2019-07-15T23:59:59",
+    "2019-08-15T23:59:59",
+    "2019-09-15T23:59:59"
+  ],
+  "required_groups": ["labels", "parcels", "B04", "B08"],
+  "required_datasets": ["labels/labels", "parcels/parcels", "B04/B04", "B04/time", "B08/B08", "B08/time"],
+  "protected_test_read": false
+}

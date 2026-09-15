@@ -1,0 +1,34 @@
+{
+  "stage": "64",
+  "name": "agrisen_cog_external_role_freeze",
+  "input_stage": "artifacts/stage63/external_data_audit",
+  "years": {
+    "fit_and_calibration": 2019,
+    "protected_blind_test": 2020
+  },
+  "retained_labels": {
+    "rye": {"icc_code": "16", "hcat_code": "3301010300"},
+    "oats": {"icc_code": "17", "hcat_code": "3301010500"},
+    "potatoes": {"icc_code": "51", "hcat_code": "3301030000"},
+    "beans": {"icc_code": "71", "hcat_code": "3301020100"},
+    "peas": {"icc_code": "77", "hcat_code": "3301020600"},
+    "fallow land": {"icc_code": "98", "hcat_code": "3301110000"}
+  },
+  "support_thresholds": {
+    "source_fit_minimum_per_class": 500,
+    "target_fit_minimum_per_class": 200,
+    "calibration_minimum_per_class": 200,
+    "minimum_retained_classes": 4,
+    "minimum_calibration_total": 2000
+  },
+  "role_rule": "For every target-country/calibration-country pair, retain labels meeting all three support thresholds; rank pairs by retained-class count descending, calibration total descending, target country ascending, calibration country ascending. Source-fit is all other countries in 2019. Protected blind test is the selected target country in 2020.",
+  "parcel_id_scope": "country:poly_index; poly_index is a local AOI identifier and is not globally unique across countries",
+  "protected_test_contract": {
+    "member_listing_allowed": true,
+    "label_columns_read": false,
+    "feature_columns_read": false,
+    "parquet_bytes_read": false,
+    "role_manifest_frozen_before_read": true
+  },
+  "failure_status": "NO_EXTERNAL_POSITIVE_GATE"
+}

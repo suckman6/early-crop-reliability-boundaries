@@ -1,0 +1,10 @@
+{
+  "stage": "87_s4a_catalonia_role_freeze",
+  "feature_dir": "artifacts/stage86/s4a_catalonia_features",
+  "output_dir": "artifacts/stage87/s4a_catalonia_role_freeze",
+  "calibration_fraction": 0.30,
+  "assignment_rule": "sha256(tile+patch_x+patch_y) modulo 100 below 30",
+  "normalization_source": "fit-role tensor_0 NDVI values with valid_mask",
+  "shared_classes": {"0": "rye", "1": "oats", "2": "potatoes", "3": "peas", "4": "fallow_land"},
+  "protected_test_read": false
+}

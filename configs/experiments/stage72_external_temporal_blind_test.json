@@ -1,0 +1,24 @@
+{
+  "stage": "72",
+  "name": "agrisen_cog_external_temporal_one_time_blind_test",
+  "base_protocol": "configs/experiments/stage70_agrisen_multitarget_temporal_protocol.json",
+  "stage71_required": "artifacts/stage71/external_temporal_calibration_seedwise_retry3/stage71_calibration_result.json",
+  "test_year": 2020,
+  "targets": ["Austria", "Denmark"],
+  "report": [
+    "automatic coverage",
+    "automatic label error risk",
+    "descriptive 95% intervals",
+    "mean stopping date",
+    "per-prefix stop counts",
+    "defer rate",
+    "observed contract satisfaction"
+  ],
+  "prohibitions": [
+    "no post-test tuning",
+    "no retraining",
+    "no threshold changes",
+    "no class-conditional guarantee",
+    "no claim of universal cross-country generalization"
+  ]
+}

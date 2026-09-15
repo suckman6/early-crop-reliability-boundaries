@@ -1,0 +1,19 @@
+{
+  "stage": "stage46_tinyeurocrops_selective_policy",
+  "dataset": "TinyEuroCrops",
+  "status": "READY_FOR_MANUAL_POLICY_CALIBRATION",
+  "experiment_authorized": false,
+  "cutoffs": ["apr15", "may15", "jun15", "jul15", "aug15", "sep15"],
+  "selective_risk_contract": {
+    "risk_population": "automatically labelled samples only; deferred samples receive no automatic crop label",
+    "overall_error_risk_target": 0.1,
+    "minimum_automatic_coverage": 0.2,
+    "confidence": 0.95,
+    "candidate_pmax_thresholds": [0.8, 0.85, 0.9, 0.95, 0.975],
+    "multiplicity": "Bonferroni over five fixed candidates and two bounds per candidate",
+    "classwise_reporting": "descriptive only; no class-conditional guarantee"
+  },
+  "calibration_role": "SI034",
+  "protected_until_policy_freeze": ["AT121", "DK041", "SI036", "SI037", "HDF5s/test"],
+  "next_gate": "stage47_protected_test_download_and_audit"
+}

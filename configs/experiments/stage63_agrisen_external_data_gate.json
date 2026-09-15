@@ -1,0 +1,46 @@
+{
+  "stage": "63",
+  "name": "agrisen_cog_external_data_and_label_gate",
+  "question": "Can the risk-constrained early-season stopping protocol be audited on an independent parcel-level, multi-country, multi-year dataset before any model or protected-test access?",
+  "official_sources": {
+    "zenodo_record": "https://zenodo.org/records/7892012",
+    "zenodo_doi": "10.5281/zenodo.7892012",
+    "repository": "https://github.com/tselea/agrisen-cog",
+    "paper": "https://doi.org/10.3390/rs15122980",
+    "timeseries_archive": {
+      "url": "https://zenodo.org/records/7892012/files/parcel_timeseries_barycenters_raw.zip?download=1",
+      "filename": "parcel_timeseries_barycenters_raw.zip",
+      "bytes": 976802585,
+      "md5": "cd8111060049dfd436d6a2252d0f79c0"
+    },
+    "label_metadata": [
+      "https://raw.githubusercontent.com/tselea/agrisen-cog/main/lpis_files/icc.yaml",
+      "https://raw.githubusercontent.com/tselea/agrisen-cog/main/lpis_files/encodings.yaml",
+      "https://raw.githubusercontent.com/tselea/agrisen-cog/main/lpis_files/lpis_column_mapping.yaml",
+      "https://raw.githubusercontent.com/tselea/agrisen-cog/main/lpis_files/DOCUMENTATION.md"
+    ]
+  },
+  "expected_scope": {
+    "countries": ["Austria", "Belgium", "Catalonia", "Denmark", "Netherlands"],
+    "years": [2019, 2020],
+    "early_window": ["04-01", "09-30"],
+    "protected_test_paths_forbidden_before_policy_freeze": ["test", "protected", "final"]
+  },
+  "claim_contract": {
+    "risk_target": 0.1,
+    "minimum_coverage": 0.2,
+    "confidence": 0.95,
+    "class_conditional_guarantee": false,
+    "new_conformal_theory_claim": false
+  },
+  "role_selection": {
+    "status": "deferred_until_data_gate",
+    "rule": "select a country with both years and maximum retained class intersection; source-fit is other countries in 2019, target-fit is the selected country in 2019, calibration is a separate 2019 country, protected blind test is the selected country in 2020; ties are resolved by calibration count then lexicographic country code"
+  },
+  "test_access": {
+    "allowed_in_stage": false,
+    "labels_read": false,
+    "predictions_read": false,
+    "role_manifest_frozen": false
+  }
+}

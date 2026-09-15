@@ -1,0 +1,16 @@
+{
+  "stage": "84_s4a_catalonia_label_support_audit",
+  "year": 2019,
+  "direct_root": "data/sen4agrinet/raw/cat_2019_nc",
+  "tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "shared_classes": {
+    "160": "rye",
+    "170": "oats",
+    "510": "potatoes",
+    "770": "peas",
+    "975": "fallow_land"
+  },
+  "minimum_parcels_per_class": 200,
+  "read_scope": ["labels", "parcels"],
+  "protected_test_read": false
+}

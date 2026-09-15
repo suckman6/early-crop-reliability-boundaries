@@ -1,0 +1,18 @@
+{
+  "stage": "46b_tinyeurocrops_negative_replication",
+  "dataset": "TinyEuroCrops",
+  "status": "READY_FOR_NEGATIVE_REPLICATION_FREEZE",
+  "experiment_authorized": true,
+  "input_stage": "stage46_tinyeurocrops_selective_policy",
+  "scientific_decision": "freeze_no_certified_policy",
+  "reason": "The preregistered fixed candidate family contains no threshold satisfying both the 95% simultaneous risk upper-bound target and the minimum coverage lower-bound target.",
+  "prohibited_actions": [
+    "posthoc threshold-family expansion",
+    "posthoc risk-or-coverage target relaxation",
+    "model retraining selected from the failed calibration result",
+    "protected-test access"
+  ],
+  "formal_claim_eligible": false,
+  "next_stage_authorized": false,
+  "final_test_read": false
+}

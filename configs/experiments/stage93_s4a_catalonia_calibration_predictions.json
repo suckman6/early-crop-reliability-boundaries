@@ -1,0 +1,15 @@
+{
+  "stage": "93_s4a_catalonia_calibration_predictions",
+  "feature_dir": "artifacts/stage86/s4a_catalonia_features",
+  "role_assignments": "artifacts/stage90/s4a_catalonia_three_role_freeze/stage90_role_assignments.csv",
+  "target_fit_root": "artifacts/stage92/s4a_catalonia_target_fit",
+  "output_dir": "artifacts/stage93/s4a_catalonia_calibration_predictions",
+  "shared_classes": {"0": "rye", "1": "oats", "2": "potatoes", "3": "peas", "4": "fallow_land"},
+  "cutoffs": ["2019-04-15", "2019-05-15", "2019-06-15", "2019-07-15", "2019-08-15", "2019-09-15"],
+  "batch_size": 512,
+  "device": "cuda",
+  "roles_read": ["source_checkpoint", "target_fit_checkpoint", "calibration_2019"],
+  "roles_not_read": ["protected_blind_test_2020"],
+  "protected_test_read": false,
+  "formal_claim_eligible": false
+}

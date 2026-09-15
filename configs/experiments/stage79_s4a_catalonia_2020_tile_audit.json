@@ -1,0 +1,16 @@
+{
+  "stage": "79",
+  "name": "s4a_catalonia_2020_tile_integrity_audit",
+  "input_root": "data/sen4agrinet/raw/cat_2020_nc",
+  "expected_year": 2020,
+  "expected_country_code": "ES",
+  "expected_tiles": ["31TBF", "31TCF", "31TCG", "31TDF", "31TDG"],
+  "expected_file_counts": {"31TBF": 299, "31TCF": 454, "31TCG": 792, "31TDF": 86, "31TDG": 686},
+  "required_groups": ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10", "B11", "B12", "B8A", "labels", "parcels"],
+  "representative_read_scope": ["root groups", "root attributes", "B02/time metadata", "B02/B02 shape"],
+  "label_data_read": false,
+  "parcel_data_read": false,
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

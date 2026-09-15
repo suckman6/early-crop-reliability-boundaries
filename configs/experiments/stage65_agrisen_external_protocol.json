@@ -1,0 +1,60 @@
+{
+  "stage": "65",
+  "name": "agrisen_cog_external_method_reproduction",
+  "dataset": {
+    "archive": "data/agrisen_cog/raw/parcel_timeseries_barycenters_raw.zip",
+    "archive_md5": "cd8111060049dfd436d6a2252d0f79c0",
+    "role_manifest": "artifacts/stage64/external_role_freeze_seed0/stage64_external_role_manifest.json",
+    "metadata_dir": "data/agrisen_cog/metadata"
+  },
+  "roles": {
+    "source_fit": {"countries": ["Belgium", "Denmark", "Netherlands"], "year": 2019},
+    "target_fit": {"country": "Catalonia", "year": 2019},
+    "calibration": {"country": "Austria", "year": 2019},
+    "protected_blind_test": {"country": "Catalonia", "year": 2020}
+  },
+  "labels": {
+    "rye": {"icc_code": "16", "index": 0},
+    "oats": {"icc_code": "17", "index": 1},
+    "potatoes": {"icc_code": "51", "index": 2},
+    "beans": {"icc_code": "71", "index": 3},
+    "peas": {"icc_code": "77", "index": 4},
+    "fallow land": {"icc_code": "98", "index": 5}
+  },
+  "early_decision_cutoffs": [
+    "2019-04-15", "2019-05-15", "2019-06-15",
+    "2019-07-15", "2019-08-15", "2019-09-15"
+  ],
+  "feature_adapter": {
+    "source_representation": "single-valued irregular parcel barycenter series",
+    "duplicate_natural_date_reducer": "finite_mean",
+    "statistics": ["mean", "std", "last", "slope_per_day", "valid_count", "lag_days"],
+    "common_cohort_rule": "at least one finite observation on or before the first cutoff",
+    "missing_prefix_policy": "exclude from the common cohort",
+    "normalization_fit_role": "source_fit_train_only"
+  },
+  "source_split": {
+    "train_fraction": 0.8,
+    "method": "stable_sha256_rank_within_country_label",
+    "seed": 0
+  },
+  "training": {
+    "hidden_dimension": 128,
+    "epochs_source": 30,
+    "epochs_target_fit": 10,
+    "batch_size": 512,
+    "source_learning_rate": 0.001,
+    "target_fit_learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "device_default": "cuda",
+    "seed": 0
+  },
+  "protected_test_contract": {
+    "member_listing_allowed": true,
+    "parquet_bytes_read": false,
+    "labels_read": false,
+    "features_read": false,
+    "policy_frozen_before_read": true
+  },
+  "formal_claim_eligible": false
+}

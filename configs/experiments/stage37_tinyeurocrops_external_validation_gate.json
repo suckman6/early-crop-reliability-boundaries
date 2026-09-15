@@ -1,0 +1,105 @@
+{
+  "stage": "37_external_validation_data_gate",
+  "status": "CONDITIONAL_GO_FOR_LABEL_ONLY_PREFLIGHT",
+  "decision_date": "2026-08-01",
+  "candidate_dataset": {
+    "name": "TinyEuroCrops",
+    "doi": "10.14459/2021mp1615987",
+    "official_record": "https://mediatum.ub.tum.de/1615987",
+    "license": "CC BY 4.0",
+    "countries_and_years": {
+      "Austria": 2020,
+      "Denmark": 2019,
+      "Slovenia": 2020
+    },
+    "formats": [
+      "CSV labels",
+      "HDF5 Sentinel-2 13-band parcel time series",
+      "GeoJSON parcel geometries"
+    ]
+  },
+  "frozen_external_validation_roles": {
+    "source_countries": [
+      "Austria",
+      "Denmark"
+    ],
+    "target_country": "Slovenia",
+    "target_fit_regions": [
+      "SI031",
+      "SI032",
+      "SI033"
+    ],
+    "target_risk_calibration_region": "SI034",
+    "protected_target_test_regions": [
+      "SI036",
+      "SI037"
+    ],
+    "selection_basis": "published spatial split structure only; no target test label or time-series record was read"
+  },
+  "official_inventory": {
+    "train_label_files": [
+      "demo_eurocrops_AT112.csv",
+      "demo_eurocrops_AT122.csv",
+      "demo_eurocrops_AT123.csv",
+      "demo_eurocrops_AT124.csv",
+      "demo_eurocrops_AT125.csv",
+      "demo_eurocrops_AT127.csv",
+      "demo_eurocrops_AT130.csv",
+      "demo_eurocrops_AT223.csv",
+      "demo_eurocrops_DK032.csv",
+      "demo_eurocrops_DK042.csv",
+      "demo_eurocrops_DK050.csv",
+      "demo_eurocrops_SI031.csv",
+      "demo_eurocrops_SI032.csv",
+      "demo_eurocrops_SI033.csv",
+      "demo_eurocrops_SI034.csv"
+    ],
+    "protected_test_label_files": [
+      "demo_eurocrops_AT121.csv",
+      "demo_eurocrops_DK041.csv",
+      "demo_eurocrops_SI036.csv",
+      "demo_eurocrops_SI037.csv"
+    ],
+    "train_time_series_files": [
+      "AT_T33UWP_train.h5",
+      "DK_T32VNH_train.h5",
+      "SI_T33TWM_train.h5"
+    ],
+    "protected_test_time_series_files": [
+      "AT_T33UWP_test.h5",
+      "DK_T32VNH_test.h5",
+      "SI_T33TWM_test.h5"
+    ]
+  },
+  "stage38_allowed_inputs": [
+    "official root checksums.sha512",
+    "csv_labels/train only",
+    "the current Stage 29 sixteen-class HCAT list",
+    "the public TinyEuroCrops README and sample notebook"
+  ],
+  "stage38_prohibited_inputs": [
+    "csv_labels/test",
+    "HDF5s/test",
+    "GeoJSON test regions",
+    "any target-test class count, label, reflectance, prediction, or metric"
+  ],
+  "label_preflight_requirements": [
+    "Verify the exact label column, code width, and crop-name semantics without assuming that legacy HCAT codes equal current ten-digit HCAT codes.",
+    "Construct any mapping from documented taxonomy metadata and names, never from target-test outcomes.",
+    "Require shared source-train and Slovenia target-train classes with enough SI031-SI034 records to support separate fitting and risk calibration.",
+    "Require winter common soft wheat and winter rapeseed to be representable if Stage 36 is to be tested as the same output-label-aware hypothesis.",
+    "Abandon this candidate rather than switch target country after inspecting training-label frequencies if the frozen Slovenia gate fails."
+  ],
+  "test_access": {
+    "test_labels_read": false,
+    "test_time_series_read": false,
+    "test_files_downloaded": false,
+    "test_metrics_computed": false
+  },
+  "modelscope_search": {
+    "checked": true,
+    "query_date": "2026-08-01",
+    "compatible_exact_mirror_found": false,
+    "scope_note": "No indexed ModelScope result was found for TinyEuroCrops, EuroCropsML, EuroCrops, Sen4AgriNet, BreizhCrops, or BavarianCrops; this is a search result, not proof of absence."
+  }
+}

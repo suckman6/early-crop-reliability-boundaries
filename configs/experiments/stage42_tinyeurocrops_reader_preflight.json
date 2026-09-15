@@ -1,0 +1,28 @@
+{
+  "stage": "stage42_tinyeurocrops_reader_preflight",
+  "dataset": "TinyEuroCrops",
+  "status": "GO_FOR_TRAINING_ONLY_READER_PILOT",
+  "experiment_authorized": false,
+  "input_contract": {
+    "hdf5_root": "data/tinyeurocrops/raw/HDF5s/train",
+    "label_root": "data/tinyeurocrops/raw/csv_labels/train",
+    "class_manifest": "artifacts/stage40/tinyeurocrops_generic_hcat8_protocol/generic_hcat8_class_manifest.csv",
+    "scale": "float32(raw_dn) / 10000.0",
+    "missing_cell_policy": "zero_fill_with_observed_mask_false",
+    "unsupported_class_policy": "exclude_and_report"
+  },
+  "roles": {
+    "source": ["AT112", "AT122", "AT123", "AT124", "AT125", "AT127", "AT130", "AT223", "DK032", "DK042", "DK050"],
+    "target_fit": ["SI031", "SI032", "SI033"],
+    "target_risk_calibration": ["SI034"],
+    "unassigned_training": ["SI035"]
+  },
+  "static_checks": [
+    "all frozen training HDF5 and CSV paths exist",
+    "all required role regions exist in the HDF5 stores",
+    "class manifest has unique indices and legacy HCAT8 codes",
+    "no test path is opened",
+    "reader does not fit normalization statistics"
+  ],
+  "next_gate": "stage43_manual_training_command"
+}

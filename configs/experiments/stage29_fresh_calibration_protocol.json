@@ -1,0 +1,52 @@
+{
+  "base_protocol": "stage20_eurocropsml_transfer_protocol.json",
+  "dataset": "EuroCropsML Zenodo v8 preprocess",
+  "task": "cross-country crop classification with selective risk-controlled early stopping",
+  "year": 2021,
+  "source_domain": {
+    "countries": ["Latvia", "Portugal"],
+    "train_split": "latvia_portugal_vs_estonia/pretrain/region_split.json:train",
+    "development_split": "latvia_portugal_vs_estonia/pretrain/region_split.json:val"
+  },
+  "target_domain": {
+    "country": "Estonia",
+    "official_test_split": "latvia_portugal_vs_estonia/finetune/region_split_all.json:test",
+    "fresh_split_manifest": "artifacts/stage29/splits/estonia_target_fit_calibration_seed20260729.json",
+    "adaptation_split": "target_fit",
+    "risk_calibration_split": "target_risk_calibration"
+  },
+  "class_rule": {
+    "hcat_codes": [
+      "3301010101", "3301010102", "3301010300", "3301010401",
+      "3301010402", "3301010500", "3301010600", "3301020100",
+      "3301020600", "3301030000", "3301060401", "3301070000",
+      "3301090301", "3301090303", "3301110000", "3301150200"
+    ]
+  },
+  "early_decision_cutoffs": [
+    "2021-04-15", "2021-05-15", "2021-06-15",
+    "2021-07-15", "2021-08-15", "2021-09-15"
+  ],
+  "fresh_split_contract": {
+    "source_partition": "latvia_portugal_vs_estonia/finetune/region_split_all.json:train",
+    "calibration_fraction": 0.25,
+    "seed": 20260729,
+    "stratification": "HCAT code",
+    "old_official_validation_split": "exploratory_only_not_formal"
+  },
+  "selective_risk_contract": {
+    "risk_population": "automatically labelled samples only; deferred samples receive no automatic crop label",
+    "overall_error_risk_target": 0.1,
+    "minimum_automatic_coverage": 0.2,
+    "confidence": 0.95,
+    "candidate_pmax_thresholds": [0.8, 0.85, 0.9, 0.95, 0.975],
+    "multiplicity": "Bonferroni over the five fixed candidates and two bounds per candidate",
+    "classwise_reporting": "descriptive only; no class-conditional guarantee is claimed"
+  },
+  "separation_rules": [
+    "The official Estonia validation split is exploratory only for this redesigned route.",
+    "The fresh target-risk-calibration split must not be used to fit either classifier.",
+    "The official Estonia test labels are used only once after policy freezing for final reporting.",
+    "Do not choose targets, candidate thresholds, or the split after reading fresh calibration outcomes."
+  ]
+}

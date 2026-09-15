@@ -1,0 +1,18 @@
+{
+  "stage": "62B_spatial_block_calibration_sensitivity",
+  "base_protocol": "stage29_fresh_calibration_protocol.json",
+  "dataset": "EuroCropsML Zenodo v8 preprocess",
+  "target_country": "Estonia",
+  "source_partition": "latvia_portugal_vs_estonia/finetune/region_split_all.json:train",
+  "region_key": "filename_prefix_before_first_underscore",
+  "candidate_regions": ["EE001", "EE004", "EE008", "EE009", "EE00A"],
+  "scenario_contract": {
+    "design": "leave_one_region_out",
+    "target_fit_role": "all declared target-train parcels outside the held-out region",
+    "target_risk_calibration_role": "all declared target-train parcels in the held-out region",
+    "selection": "all candidate regions are evaluated; no region is selected from calibration outcomes",
+    "class_rule": "the frozen 16-code HCAT label space from the base protocol",
+    "final_test": "never read in this stage"
+  },
+  "roles_not_read": ["source_train", "source_development", "target_final_test"]
+}

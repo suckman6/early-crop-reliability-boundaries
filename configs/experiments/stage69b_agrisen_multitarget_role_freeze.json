@@ -1,0 +1,47 @@
+{
+  "stage": "69B",
+  "name": "agrisen_cog_multitarget_spatial_role_freeze",
+  "official_source": {
+    "record": "https://zenodo.org/records/7892012",
+    "doi": "10.5281/zenodo.7892012",
+    "geometry_file": "lpis_parcel_info.zip",
+    "geometry_expected_size_bytes": 2922605406,
+    "geometry_expected_md5": "30aa3d3281e209ea00d2e2b817c412c5",
+    "timeseries_file": "parcel_timeseries_barycenters_raw.zip",
+    "timeseries_expected_md5": "cd8111060049dfd436d6a2252d0f79c0"
+  },
+  "geometry_archive": "data/agrisen_cog/raw/lpis_parcel_info.zip",
+  "timeseries_archive": "data/agrisen_cog/raw/parcel_timeseries_barycenters_raw.zip",
+  "fit_year": 2019,
+  "protected_test_year": 2020,
+  "candidate_target_countries": ["Austria", "Belgium", "Catalonia", "Denmark", "Netherlands"],
+  "labels": {
+    "rye": {"icc_code": "16", "index": 0},
+    "oats": {"icc_code": "17", "index": 1},
+    "potatoes": {"icc_code": "51", "index": 2},
+    "beans": {"icc_code": "71", "index": 3},
+    "peas": {"icc_code": "77", "index": 4},
+    "fallow land": {"icc_code": "98", "index": 5}
+  },
+  "common_cohort": {
+    "first_cutoff": "2019-04-15",
+    "rule": "at least one finite barycenter observation on or before the first cutoff"
+  },
+  "spatial_split": {
+    "analysis_crs": "EPSG:3035",
+    "grid_size_m": 10000,
+    "grid_origin_m": [0, 0],
+    "calibration_fraction_target": 0.3,
+    "block_order": "sha256(stage69b|country|2019|grid_x|grid_y)",
+    "allocation": "assign sorted whole blocks to calibration until its parcel count first reaches the target fraction"
+  },
+  "support_thresholds": {
+    "source_fit_minimum_per_class": 500,
+    "target_fit_minimum_per_class": 200,
+    "calibration_minimum_per_class": 200,
+    "minimum_calibration_total": 2000
+  },
+  "selection_rule": "rank eligible targets by minimum class support across source-fit, target-fit and calibration descending, then calibration total descending, then target common-cohort total descending, then country code ascending; freeze the first two",
+  "minimum_selected_targets": 2,
+  "failure_status": "NO_MULTITARGET_EXTERNAL_POSITIVE_GATE"
+}

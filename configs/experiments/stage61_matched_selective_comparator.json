@@ -1,0 +1,43 @@
+{
+  "stage": "stage61_matched_selective_comparator",
+  "purpose": "Post hoc matched comparison of confidence scores under the frozen Estonia protocol",
+  "formal_claim_eligible": false,
+  "test_status": "The official Estonia test role was already opened by Stage 31; all test results in this stage are descriptive diagnostics and cannot change the frozen policy.",
+  "base_protocol": "configs/experiments/stage29_fresh_calibration_protocol.json",
+  "fixed_data_roles": {
+    "source_runs": "Stage 22 seed 0 source-prefix models",
+    "target_runs": "Stage 29 seed 0 target-adapted models",
+    "calibration_runs": "Stage 29 seed 0 fresh target-risk-calibration predictions",
+    "test_role": "Stage 31 official Estonia final test, read only after calibration and policy freezing"
+  },
+  "score_families": {
+    "pmax": {
+      "description": "Maximum softmax probability; reproduces the primary frozen protocol",
+      "thresholds": [0.8, 0.85, 0.9, 0.95, 0.975]
+    },
+    "margin": {
+      "description": "Top-one minus top-two softmax probability margin",
+      "thresholds": [0.05, 0.1, 0.15, 0.2, 0.25]
+    },
+    "entropy_confidence": {
+      "description": "One minus normalized predictive entropy",
+      "thresholds": [0.2, 0.3, 0.4, 0.5, 0.6]
+    }
+  },
+  "selection_contract": {
+    "risk_population": "automatically labelled samples only",
+    "overall_error_risk_target": 0.1,
+    "minimum_automatic_coverage": 0.2,
+    "confidence": 0.95,
+    "multiplicity": "Bonferroni over five fixed thresholds and two one-sided bounds per score family",
+    "selection": "earliest mean stopping index among certified calibration candidates; ties by higher coverage then lower threshold",
+    "test_labels_for_selection": false
+  },
+  "interpretation_rules": [
+    "Do not retrain models or alter dates, splits, class vocabulary, or the frozen primary policy.",
+    "Do not select a comparator score family or threshold using final-test outcomes.",
+    "Report this stage as a post hoc matched diagnostic, not as an independent blind replication.",
+    "If no comparator candidate is certified, report NO_CERTIFIED_POLICY rather than relaxing thresholds or targets."
+  ]
+}
+

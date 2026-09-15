@@ -1,0 +1,18 @@
+{
+  "stage": "91_mainline_evidence_freeze",
+  "mainline": {
+    "source_fit": ["Latvia", "Portugal"],
+    "target": "Estonia",
+    "year": 2021,
+    "cutoffs": ["2021-04-15", "2021-05-15", "2021-06-15", "2021-07-15", "2021-08-15", "2021-09-15"]
+  },
+  "evidence": {
+    "source_runs": "artifacts/stage22",
+    "target_fit_runs": "artifacts/stage29",
+    "calibration": "artifacts/stage30/selective_policy_seed0/calibration_result.json",
+    "blind_test": "artifacts/stage31/final_blind_test_seed0/test_result.json"
+  },
+  "supplementary_external_route": "Catalonia S4A retained as non-formal audit; no certified policy",
+  "protected_test_read": true,
+  "formal_claim_eligible": true
+}

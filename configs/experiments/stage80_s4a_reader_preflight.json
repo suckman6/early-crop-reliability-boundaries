@@ -1,0 +1,12 @@
+{
+  "stage": "80",
+  "name": "s4a_france_2019_unified_reader_preflight",
+  "manifest": "data/sen4agrinet/raw/fr_2019_unified/manifest.json",
+  "read_scope": ["labels", "parcels", "B02/time", "B02/B02 shape"],
+  "materialize_band_values": false,
+  "expected_tiles": ["31TCJ", "31TDK", "31TCL", "31TDM", "31UCP", "31UDR"],
+  "expected_file_counts": {"31TCJ": 895, "31TDK": 900, "31TCL": 900, "31TDM": 900, "31UCP": 900, "31UDR": 880},
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false
+}

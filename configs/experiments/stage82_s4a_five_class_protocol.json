@@ -1,0 +1,22 @@
+{
+  "stage": "82_s4a_five_class_protocol_freeze",
+  "status": "PROTOCOL_REDESIGN_AFTER_STAGE81_SUPPORT_GATE",
+  "basis": "Stage 81 full France 2019 label audit; no protected-test labels or model outputs",
+  "dataset_audit": "artifacts/stage81/s4a_label_time_adapter/stage81_s4a_label_time_adapter.json",
+  "shared_classes": [
+    {"name": "rye", "raw_code": 160},
+    {"name": "oats", "raw_code": 170},
+    {"name": "potatoes", "raw_code": 510},
+    {"name": "peas", "raw_code": 770},
+    {"name": "fallow_land", "raw_code": 975}
+  ],
+  "excluded_from_external_protocol": [
+    {"name": "beans", "raw_code": 710, "reason": "Stage 81 France 2019 support was 79 parcels, below the predeclared minimum of 200"}
+  ],
+  "minimum_parcels_per_class": 200,
+  "roles_to_audit_before_training": ["source_fit", "target_fit", "calibration", "protected_test"],
+  "protected_test_read": false,
+  "model_training_started": false,
+  "policy_selection_started": false,
+  "next_gate": "AUDIT_CATALONIA_FIVE_CLASS_SUPPORT"
+}
