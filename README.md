@@ -1,4 +1,4 @@
-# Risk-Calibrated Selective Release for Early-Season Crop Mapping under Geographic Shift
+# Reliability Boundaries of Confidence-Based Early-Season Crop Mapping across Regions and Years
 
 This repository releases the protocol and evaluation code used to study when an early-season parcel-level crop prediction may be released automatically under a predeclared risk--coverage contract.
 
@@ -71,6 +71,8 @@ The repository contains neither parcel-level test labels nor protected-test pred
 
 The released numerical protocol can be reused with new, lawfully obtained data. Running the original stage scripts end to end requires data adapters, licensed data, trained checkpoints, and/or stored prediction exports that are intentionally excluded here. `MISSING_DEPENDENCIES.md` records these interfaces explicitly rather than silently substituting data or weakening the protected-test design.
 
+`paper/ijaeog_r12/` is retained as a historical development/provenance directory from an earlier manuscript version and does not represent the current article title.
+
 ## Citation and licence
 
-Use `CITATION.cff` after the authors, release date, and repository URL have been completed. The default `LICENSE` is MIT with an author placeholder pending the authors' explicit choice.
+Use `CITATION.cff` to cite the software and its associated manuscript; it records the current article title, author order, release date, and repository URL. The MIT license text retains a copyright-holder placeholder pending the authors' explicit choice.
