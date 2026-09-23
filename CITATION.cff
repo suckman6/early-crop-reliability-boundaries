@@ -1,10 +1,24 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the associated manuscript."
-title: "Risk-Calibrated Selective Release for Early-Season Crop Mapping under Geographic Shift"
+title: "Reliability Boundaries of Confidence-Based Early-Season Crop Mapping across Regions and Years"
 type: software
 version: 0.1.0
 date-released: 2026-09-14
 authors:
-  - family-names: "[FAMILY NAME]"
-    given-names: "[GIVEN NAME]"
-url: "https://github.com/[OWNER]/[REPOSITORY]"
+  - family-names: "Wang"
+    given-names: "Jie"
+  - family-names: "Xu"
+    given-names: "Junfeng"
+  - family-names: "Cheng"
+    given-names: "Qiang"
+  - family-names: "Wang"
+    given-names: "Binhong"
+  - family-names: "Tian"
+    given-names: "Yunong"
+  - family-names: "Liang"
+    given-names: "Xiao"
+  - family-names: "Wang"
+    given-names: "Yitian"
+  - family-names: "Chen"
+    given-names: "Xinyue"
+url: "https://github.com/suckman6/early-crop-reliability-boundaries"
