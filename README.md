@@ -75,4 +75,4 @@ The released numerical protocol can be reused with new, lawfully obtained data. 
 
 ## Citation and licence
 
-Use `CITATION.cff` to cite the software and its associated manuscript; it records the current article title, author order, release date, and repository URL. The repository is distributed under the MIT License.
+Use `CITATION.cff` to cite the software and its associated manuscript; it records the current article title, author order, and repository URL. The repository is distributed under the MIT License.
