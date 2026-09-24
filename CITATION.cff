@@ -2,8 +2,6 @@ cff-version: 1.2.0
 message: "If you use this software, please cite the associated manuscript."
 title: "Reliability Boundaries of Confidence-Based Early-Season Crop Mapping across Regions and Years"
 type: software
-version: 0.1.0
-date-released: 2026-09-14
 authors:
   - family-names: "Wang"
     given-names: "Jie"
