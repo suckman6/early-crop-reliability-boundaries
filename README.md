@@ -1,6 +1,6 @@
 # Reliability Boundaries of Confidence-Based Early-Season Crop Mapping across Regions and Years
 
-This repository releases the protocol and evaluation code used to study when an early-season parcel-level crop prediction may be released automatically under a predeclared risk--coverage contract.
+This repository releases the protocol and evaluation code used to study when an early-season parcel-level crop prediction may be released automatically under pre-specified risk and coverage criteria.
 
 ## What this release contains
 
@@ -75,4 +75,4 @@ The released numerical protocol can be reused with new, lawfully obtained data. 
 
 ## Citation and licence
 
-Use `CITATION.cff` to cite the software and its associated manuscript; it records the current article title, author order, release date, and repository URL. The MIT license text retains a copyright-holder placeholder pending the authors' explicit choice.
+Use `CITATION.cff` to cite the software and its associated manuscript; it records the current article title, author order, release date, and repository URL. The repository is distributed under the MIT License.
